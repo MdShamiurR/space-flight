@@ -1,11 +1,11 @@
 
 const Pagination = () => {
   return (
-    <div className="flex items-center justify-center border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-6">
+    <div className="flex items-center justify-center border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-12">
       <div className=" sm:flex sm:flex-1 sm:items-center sm:justify-center">
         <div>
           <nav
-            className="isolate inline-flex -space-x-px rounded-md shadow-sm "
+            className="isolate inline-flex -space-x-px rounded-md shadow-sm font-[helvetica-neue] "
             aria-label="Pagination"
           >
             <a
@@ -46,26 +46,33 @@ const Pagination = () => {
             >
               3
             </a>
-            <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-[#0D6EFD] ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
-              ...
-            </span>
             <a
               href="#"
               className="relative hidden items-center px-4 py-2 text-sm font-semibold text-[#0D6EFD] ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 md:inline-flex"
             >
-              8
+              4
             </a>
             <a
               href="#"
               className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-[#0D6EFD] ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
-              9
+              5
             </a>
             <a
               href="#"
               className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-[#0D6EFD] ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
             >
-              10
+              6
+            </a>
+            <span className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-[#0D6EFD] ring-1 ring-inset ring-gray-300 focus:outline-offset-0">
+              ...
+            </span>
+
+            <a
+              href="#"
+              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-[#0D6EFD] ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+            >
+              13
             </a>
             <a
               href="#"
