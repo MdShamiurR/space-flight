@@ -3,7 +3,6 @@ import formatDateToDDMMMMYYYY from "../../../helper/DateHelper";
 const ServicesCard = ({ service }) => {
   const { launch_date_utc, mission_name, launch_success } = service;
   const launchDate = new Date(launch_date_utc);
-  // const formattedLaunchDate = format(launchDate, "dd MMMM, yyyy");
   const formattedLaunchDate = formatDateToDDMMMMYYYY(launchDate);
 
   return (
@@ -17,12 +16,10 @@ const ServicesCard = ({ service }) => {
       </figure>
       <div className="card-body items-center text-center">
         <p className="">
-          <span className="text-[#6C757D] font-[barlow]">Launch Date:</span>
-          <span className="text-[#343A40] font-[barlow]">
-            {formattedLaunchDate}
-          </span>
+          <span className="text-[#6C757D]">Launch Date:</span>
+          <span className="text-[#343A40]">{formattedLaunchDate}</span>
         </p>
-        <h2 className="text-2xl font-[barlow] text-[#212529]">
+        <h2 className="text-2xl text-[#212529]">
           {mission_name}
         </h2>
         <p>{service.rocket.rocket_id}</p>
@@ -38,7 +35,6 @@ const ServicesCard = ({ service }) => {
             </span>
           )}
         </p>
-        
       </div>
     </div>
   );

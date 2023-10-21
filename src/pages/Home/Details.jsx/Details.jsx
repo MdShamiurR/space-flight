@@ -1,5 +1,4 @@
 
-
 import { useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 
@@ -9,26 +8,34 @@ const Details = ({
   search,
   services,
   setFilteredServices,
-  setCurrentPage
-}) => {
-  const [upcomings,setUpcomings]=useState(true)
-
-  const handleCheck = () => {
-    setUpcomings(!upcomings);
- if (upcomings === true) {
-      console.log("filtering",)
-      const filteredData = services.filter(
-        (service) => service.upcoming === true
-      );
-      console.log("filteredData", filteredData);
-      setFilteredServices(filteredData);
-    } else{
-      setFilteredServices(services)
-    }
-    
-    
-  };
+  setCurrentPage,
   
+}) => {
+  const [upcomings, setUpcomings] = useState(false);
+
+const handleCheck = (currentState) => {
+  if (currentState) {
+    console.log("1st consol", currentState);
+    console.log(services)
+    const filteredData = services.filter(
+      (service) => service.upcoming === true
+      
+    );
+    console.log("2nd filteredData", filteredData);
+    setFilteredServices(filteredData);
+    setUpcomings(true);
+  } else if (!currentState) {
+    // Reset filteredServices to original data
+    console.log("2nd currentState", currentState);
+    console.log("not services", services);
+    setFilteredServices(services);
+    console.log("3nd currentState", currentState);
+    console.log("services", services);
+    setUpcomings(false);
+  }
+};
+
+
   const handleStatus = (event) => {
     const selectedStatus = event.target.value;
 
@@ -47,18 +54,18 @@ const Details = ({
   };
   const handleLaunching = (event) => {
     const selectedStatus = event.target.value;
-    const currentDate = new Date(); 
+    const currentDate = new Date();
     currentDate.setFullYear(currentDate.getFullYear() - 3);
     //Due to shortage of time data current date has been set to 3 years back
 
     if (selectedStatus === "lastWeek") {
       const lastWeekDate = new Date(currentDate);
-      // 
+      //
       lastWeekDate.setDate(currentDate.getDate() - 7); // Calculate the date one week ago
 
       const filterDate = services.filter((service) => {
         const launchDate = new Date(service.launch_date_utc);
-        
+
         return launchDate >= lastWeekDate && launchDate <= currentDate;
       });
 
@@ -89,33 +96,38 @@ const Details = ({
     }
   };
 
-
   const handleChange = (event) => {
     setSearch(event.target.value);
   };
 
   return (
-    
     <div>
-      <div className="text-center mt-10">
-        <h1 className="text-4xl font-medium text-[#212529] font-[barlow]">
+      <div className="text-center mt-20">
+        <h1 className="text-4xl font-medium text-[#212529]">
           Spaceflight details
         </h1>
-        <p
-          className="font-[barlow] text-[#212529] mt-2"
-          style={{ whiteSpace: "nowrap" }}
-        >
+        <p className=" text-[#212529] mt-2" style={{ whiteSpace: "nowrap" }}>
           Find out the elaborate features of all the past big spaceflights.
         </p>
       </div>
 
       <div className="mt-14">
         <label
-          className="cursor-pointer place-content-end"
+          className="cursor-pointer place-content-end "
           style={{ display: "flex", alignItems: "center" }}
         >
-          <input value={1} onChange={handleCheck} type="checkbox" className="checkbox checkbox-primary" />
-          <span className="pl-2 label-text">Show upcoming only</span>
+          <input
+            value={1}
+            onChange={() => handleCheck(!upcomings)}
+            type="checkbox"
+            className="checkbox rounded-md"
+            style={{
+              backgroundColor: "rgba(255, 255, 255, 0)",
+              width: "16px",
+              height: "16px",
+            }}
+          />
+          <span className="pl-2 text-xs">Show upcoming only</span>
         </label>
       </div>
 
@@ -130,8 +142,13 @@ const Details = ({
             onChange={handleChange}
           />
           <button
-            className="btn btn-info"
-            style={{ borderBottomLeftRadius: "0", borderTopLeftRadius: "0" }}
+            className="btn  btn-primary"
+            style={{
+              borderBottomLeftRadius: "0",
+              borderTopLeftRadius: "0",
+              backgroundColor: "#0D6EFD",
+              border: "1px solid white",
+            }}
           >
             <BiSearchAlt2 className="text-white text-xl"></BiSearchAlt2>
           </button>

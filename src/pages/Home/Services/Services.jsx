@@ -11,6 +11,7 @@ const Services = () => {
   const [postsPerPage] = useState(9);
   const [search, setSearch] = useState("");
   const [filteredServices, setFilteredServices] = useState([]);
+  let x=1;
 
   useEffect(() => {
     fetch("https://api.spacexdata.com/v3/launches")
@@ -18,6 +19,7 @@ const Services = () => {
       .then((data) => {
         setServices(data);
         setFilteredServices(data);
+        // console.log("data",data);
       });
   }, []);
 
@@ -35,7 +37,7 @@ const Services = () => {
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = filteredServices.slice(firstPostIndex, lastPostIndex);
-  console.log("currentPosts", currentPosts);
+  
   return (
     <div>
       <Details
@@ -51,11 +53,13 @@ const Services = () => {
       <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 ">
         {currentPosts.map((currentPost) => (
           <ServicesCard
-            key={currentPost.flight_number}
+            key={currentPost.flight_number + x++}
             service={currentPost}
             filteredServices={filteredServices}
             setFilteredServices={setFilteredServices}
-          ></ServicesCard>
+          >
+          
+          </ServicesCard>
         ))}
       </div>
       <Pagination
