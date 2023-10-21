@@ -40,13 +40,17 @@ const Services = () => {
 
    const lastPostIndex = currentPage *  postsPerPage;
    const firstPostIndex = lastPostIndex - postsPerPage;
-  //  const currentPosts = services.slice(firstPostIndex, lastPostIndex);
   const currentPosts =
     search !== "" ? searchData : services.slice(firstPostIndex, lastPostIndex);
 
   return (
     <div>
-      <Details setSearch={setSearch} search={search}></Details>
+      <Details
+        setSearch={setSearch}
+        search={search}
+        services={services}
+        setServices={setServices}
+      ></Details>
 
       <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 ">
         {currentPosts.map((currentPost) => (
@@ -57,7 +61,6 @@ const Services = () => {
         ))}
       </div>
       <Pagination
-        // totalPosts={services.length}
         totalPosts={search !== "" ? searchData.length : services.length}
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
@@ -72,7 +75,6 @@ const Services = () => {
           ></ServicesCard>
         ))}
       </div> */}
-
     </div>
   );
 };

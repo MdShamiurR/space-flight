@@ -2,10 +2,26 @@
 import { BiSearchAlt2 } from "react-icons/bi";
 
 
-const Details = ({ setSearch, search }) => {
+const Details = ({ setSearch, search, services, setServices }) => {
+  const { launch_success } = services;
+
+  const handleStatus = (event) => {
+    const selectedStatus = event.target.value;
+    if (selectedStatus === "failure" || selectedStatus === "success") {
+      // Filter services based on selected launch status
+      const filteredServices = services.filter((service) => {
+        if (selectedStatus === "failure") {
+          return !service.launch_success;
+        } else {
+          return service.launch_success;
+        }
+      });
+      setServices(filteredServices);
+    }
+  };
+
   const handleChange = (event) => {
     setSearch(event.target.value);
-    
   };
 
   return (
@@ -52,7 +68,10 @@ const Details = ({ setSearch, search }) => {
         </div>
 
         <div className="flex justify-between space-x-4">
-          <select className="select select-bordered w-full max-w-xs">
+          <select
+            onClick={handleStatus}
+            className="select select-bordered w-full max-w-xs"
+          >
             <option hidden disabled selected>
               By Launch Status
             </option>
