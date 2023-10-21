@@ -1,17 +1,16 @@
 import { format } from "date-fns";
 
 const ServicesCard = ({ service }) => {
-  const { launch_date_utc, mission_name, launch_success } =
-    service;
-    // console.log(launch_success);
+  const { launch_date_utc, mission_name, launch_success } = service;
   const launchDate = new Date(launch_date_utc);
   const formattedLaunchDate = format(launchDate, "dd MMMM, yyyy");
+
   return (
     <div className="card  bg-base-100 border-gray-400 border rounded-lg">
       <figure className="px-10 pt-10">
         <img
           src={service.links.mission_patch_small}
-          alt="Shoes"
+          alt="Mission Patch"
           className="rounded-xl w-32"
         />
       </figure>

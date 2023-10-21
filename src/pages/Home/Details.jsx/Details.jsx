@@ -1,7 +1,12 @@
 
 import { BiSearchAlt2 } from "react-icons/bi";
-const Details = () => {
 
+
+const Details = ({ setSearch, search }) => {
+  const handleChange = (event) => {
+    setSearch(event.target.value);
+    
+  };
 
   return (
     //   <div className="max-w-7xl mx-auto  mt-10">
@@ -35,8 +40,8 @@ const Details = () => {
             placeholder="Search..."
             className="input input-bordered w-full max-w-xs "
             style={{ borderBottomRightRadius: "0", borderTopRightRadius: "0" }}
-
-          
+            value={search}
+            onChange={handleChange}
           />
           <button
             className="btn btn-info"
