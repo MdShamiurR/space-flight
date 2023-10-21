@@ -3,7 +3,7 @@ import { format } from "date-fns";
 const ServicesCard = ({ service }) => {
   const { launch_date_utc, mission_name, launch_success } =
     service;
-    console.log(launch_success);
+    // console.log(launch_success);
   const launchDate = new Date(launch_date_utc);
   const formattedLaunchDate = format(launchDate, "dd MMMM, yyyy");
   return (

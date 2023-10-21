@@ -1,6 +1,8 @@
 
 import { BiSearchAlt2 } from "react-icons/bi";
 const Details = () => {
+
+
   return (
     //   <div className="max-w-7xl mx-auto  mt-10">
     <div>
@@ -33,6 +35,8 @@ const Details = () => {
             placeholder="Search..."
             className="input input-bordered w-full max-w-xs "
             style={{ borderBottomRightRadius: "0", borderTopRightRadius: "0" }}
+
+          
           />
           <button
             className="btn btn-info"
@@ -41,6 +45,7 @@ const Details = () => {
             <BiSearchAlt2 className="text-white text-xl"></BiSearchAlt2>
           </button>
         </div>
+
         <div className="flex justify-between space-x-4">
           <select className="select select-bordered w-full max-w-xs">
             <option hidden disabled selected>
