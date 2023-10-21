@@ -1,24 +1,30 @@
 
+
 import { BiSearchAlt2 } from "react-icons/bi";
 
-
-const Details = ({ setSearch, search, services, setServices }) => {
-  const { launch_success } = services;
-
+const Details = ({
+  setSearch,
+  search,
+  services,
+  filteredServices,
+  setFilteredServices,
+}) => {
   const handleStatus = (event) => {
     const selectedStatus = event.target.value;
-    if (selectedStatus === "failure" || selectedStatus === "success") {
-      // Filter services based on selected launch status
-      const filteredServices = services.filter((service) => {
-        if (selectedStatus === "failure") {
-          return !service.launch_success;
-        } else {
-          return service.launch_success;
-        }
-      });
-      setServices(filteredServices);
+
+    if (selectedStatus === "success") {
+      const filteredData = services.filter(
+        (service) => service.launch_success === true
+      );
+      setFilteredServices(filteredData);
+    } else if (selectedStatus === "failure") {
+      const filteredData = services.filter(
+        (service) => service.launch_success === false
+      );
+      setFilteredServices(filteredData);
     }
   };
+
 
   const handleChange = (event) => {
     setSearch(event.target.value);
@@ -93,3 +99,4 @@ const Details = ({ setSearch, search, services, setServices }) => {
 };
 
 export default Details;
+

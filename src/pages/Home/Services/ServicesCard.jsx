@@ -37,9 +37,11 @@ const ServicesCard = ({ service }) => {
             </span>
           )}
         </p>
+        
       </div>
     </div>
   );
 };
 
 export default ServicesCard;
+
