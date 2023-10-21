@@ -1,9 +1,10 @@
-import { format } from "date-fns";
+import formatDateToDDMMMMYYYY from "../../../helper/DateHelper";
 
 const ServicesCard = ({ service }) => {
   const { launch_date_utc, mission_name, launch_success } = service;
   const launchDate = new Date(launch_date_utc);
-  const formattedLaunchDate = format(launchDate, "dd MMMM, yyyy");
+  // const formattedLaunchDate = format(launchDate, "dd MMMM, yyyy");
+  const formattedLaunchDate = formatDateToDDMMMMYYYY(launchDate);
 
   return (
     <div className="card  bg-base-100 border-gray-400 border rounded-lg">

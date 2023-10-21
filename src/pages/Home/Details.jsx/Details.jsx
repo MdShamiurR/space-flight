@@ -2,13 +2,17 @@
 
 import { BiSearchAlt2 } from "react-icons/bi";
 
+
 const Details = ({
   setSearch,
   search,
   services,
-  filteredServices,
   setFilteredServices,
+  setCurrentPage
 }) => {
+
+
+  
   const handleStatus = (event) => {
     const selectedStatus = event.target.value;
 
@@ -22,6 +26,50 @@ const Details = ({
         (service) => service.launch_success === false
       );
       setFilteredServices(filteredData);
+      setCurrentPage(1);
+    }
+  };
+  const handleLaunching = (event) => {
+    const selectedStatus = event.target.value;
+    const currentDate = new Date(); 
+    currentDate.setFullYear(currentDate.getFullYear() - 3);
+    //Due to shortage of time data current date has been set to 3 years back
+
+    if (selectedStatus === "lastWeek") {
+      const lastWeekDate = new Date(currentDate);
+      // 
+      lastWeekDate.setDate(currentDate.getDate() - 7); // Calculate the date one week ago
+
+      const filterDate = services.filter((service) => {
+        const launchDate = new Date(service.launch_date_utc);
+        
+        return launchDate >= lastWeekDate && launchDate <= currentDate;
+      });
+
+      setFilteredServices(filterDate);
+      setCurrentPage(1);
+    } else if (selectedStatus === "lastMonth") {
+      const lastMonthDate = new Date(currentDate);
+      lastMonthDate.setMonth(currentDate.getMonth() - 1); // Calculate the date one month ago
+
+      const filterDate = services.filter((service) => {
+        const launchDate = new Date(service.launch_date_utc);
+        return launchDate >= lastMonthDate && launchDate <= currentDate;
+      });
+
+      setFilteredServices(filterDate);
+      setCurrentPage(1);
+    } else if (selectedStatus === "lastYear") {
+      const lastYearDate = new Date(currentDate);
+      lastYearDate.setFullYear(currentDate.getFullYear() - 1); // Calculate the date one year ago
+
+      const filterDate = services.filter((service) => {
+        const launchDate = new Date(service.launch_date_utc);
+        return launchDate >= lastYearDate && launchDate <= currentDate;
+      });
+
+      setFilteredServices(filterDate);
+      setCurrentPage(1);
     }
   };
 
@@ -31,7 +79,7 @@ const Details = ({
   };
 
   return (
-    //   <div className="max-w-7xl mx-auto  mt-10">
+    
     <div>
       <div className="text-center mt-10">
         <h1 className="text-4xl font-medium text-[#212529] font-[barlow]">
@@ -84,13 +132,16 @@ const Details = ({
             <option value="failure">Failure</option>
             <option value="success">Success</option>
           </select>
-          <select className="select select-bordered w-full max-w-xs">
+          <select
+            onClick={handleLaunching}
+            className="select select-bordered w-full max-w-xs"
+          >
             <option hidden disabled selected>
               By Launch Date
             </option>
             <option value="lastWeek">Last Week</option>
             <option value="lastMonth">Last Month</option>
-            <option value="lastYear">Last Year</option>
+            <option value="lastYear">Last Years</option>
           </select>
         </div>
       </div>

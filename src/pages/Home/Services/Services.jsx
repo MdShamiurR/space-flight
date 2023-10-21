@@ -45,13 +45,8 @@ const Services = () => {
         filteredServices={filteredServices}
         setFilteredServices={setFilteredServices}
         setServices={setServices}
+        setCurrentPage={setCurrentPage}
       ></Details>
-      {/* <Details
-        setSearch={setSearch}
-        search={search}
-        services={services}
-        setServices={setServices} // Pass setServices to Details component
-      ></Details> */}
 
       <div className="grid grid-col-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 ">
         {currentPosts.map((currentPost) => (

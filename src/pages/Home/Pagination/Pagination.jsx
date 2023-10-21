@@ -14,7 +14,7 @@ const Pagination = ({
     pages.push(i);
   }
 
-  const goToPage = (page) => {
+const goToPage = (page) => {
     if (page >= 1 && page <= pages.length) {
       setCurrentPage(page);
       localStorage.setItem("currentPage", page);
