@@ -1,5 +1,6 @@
 
 
+import { useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
 
 
@@ -10,8 +11,23 @@ const Details = ({
   setFilteredServices,
   setCurrentPage
 }) => {
+  const [upcomings,setUpcomings]=useState(true)
 
-
+  const handleCheck = () => {
+    setUpcomings(!upcomings);
+ if (upcomings === true) {
+      console.log("filtering",)
+      const filteredData = services.filter(
+        (service) => service.upcoming === true
+      );
+      console.log("filteredData", filteredData);
+      setFilteredServices(filteredData);
+    } else{
+      setFilteredServices(services)
+    }
+    
+    
+  };
   
   const handleStatus = (event) => {
     const selectedStatus = event.target.value;
@@ -98,7 +114,7 @@ const Details = ({
           className="cursor-pointer place-content-end"
           style={{ display: "flex", alignItems: "center" }}
         >
-          <input type="checkbox" className="checkbox checkbox-primary" />
+          <input value={1} onChange={handleCheck} type="checkbox" className="checkbox checkbox-primary" />
           <span className="pl-2 label-text">Show upcoming only</span>
         </label>
       </div>

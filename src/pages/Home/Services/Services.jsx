@@ -35,7 +35,7 @@ const Services = () => {
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = filteredServices.slice(firstPostIndex, lastPostIndex);
-
+  console.log("currentPosts", currentPosts);
   return (
     <div>
       <Details
