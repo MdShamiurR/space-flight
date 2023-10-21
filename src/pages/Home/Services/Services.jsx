@@ -19,7 +19,6 @@ const Services = () => {
       .then((data) => {
         setServices(data);
         setFilteredServices(data);
-        // console.log("data",data);
       });
   }, []);
 
@@ -40,6 +39,7 @@ const Services = () => {
   
   return (
     <div>
+      
       <Details
         setSearch={setSearch}
         search={search}
@@ -58,16 +58,17 @@ const Services = () => {
             filteredServices={filteredServices}
             setFilteredServices={setFilteredServices}
           >
-          
           </ServicesCard>
         ))}
       </div>
+
       <Pagination
         totalPosts={filteredServices.length} // Use filteredServices length
         postsPerPage={postsPerPage}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       ></Pagination>
+
     </div>
   );
 };

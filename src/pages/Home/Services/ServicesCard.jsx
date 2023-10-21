@@ -1,4 +1,5 @@
 import formatDateToDDMMMMYYYY from "../../../helper/DateHelper";
+import "../../../Shared/FontFamily/FontFamily.css";
 
 const ServicesCard = ({ service }) => {
   const { launch_date_utc, mission_name, launch_success } = service;
@@ -19,18 +20,16 @@ const ServicesCard = ({ service }) => {
           <span className="text-[#6C757D]">Launch Date:</span>
           <span className="text-[#343A40]">{formattedLaunchDate}</span>
         </p>
-        <h2 className="text-2xl text-[#212529]">
-          {mission_name}
-        </h2>
+        <h2 className="text-2xl text-[#212529]">{mission_name}</h2>
         <p>{service.rocket.rocket_id}</p>
         <p className="mt-7 ">
           <span className="font-[barlow]">Launch Status:</span> <br />
           {launch_success ? (
-            <span className="bg-[#198754] text-white p-1 rounded font-[helvetica-neue]">
+            <span className="bg-[#198754] text-white p-1 rounded px-3 text-xs select-helvetica">
               Success
             </span>
           ) : (
-            <span className="bg-[#DC3545] text-white p-1 rounded px-3 font-[helvetica-neue]">
+            <span className="bg-[#DC3545] text-white p-1 rounded px-3 text-xs select-helvetica">
               Failed
             </span>
           )}

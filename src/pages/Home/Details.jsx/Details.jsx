@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
+import "../../../Shared/FontFamily/FontFamily.css";
 
 
 const Details = ({
@@ -15,28 +16,20 @@ const Details = ({
 
 const handleCheck = (currentState) => {
   if (currentState) {
-    console.log("1st consol", currentState);
-    console.log(services)
     const filteredData = services.filter(
       (service) => service.upcoming === true
       
     );
-    console.log("2nd filteredData", filteredData);
     setFilteredServices(filteredData);
     setUpcomings(true);
   } else if (!currentState) {
     // Reset filteredServices to original data
-    console.log("2nd currentState", currentState);
-    console.log("not services", services);
     setFilteredServices(services);
-    console.log("3nd currentState", currentState);
-    console.log("services", services);
     setUpcomings(false);
   }
 };
 
-
-  const handleStatus = (event) => {
+const handleStatus = (event) => {
     const selectedStatus = event.target.value;
 
     if (selectedStatus === "success") {
@@ -60,7 +53,6 @@ const handleCheck = (currentState) => {
 
     if (selectedStatus === "lastWeek") {
       const lastWeekDate = new Date(currentDate);
-      //
       lastWeekDate.setDate(currentDate.getDate() - 7); // Calculate the date one week ago
 
       const filterDate = services.filter((service) => {
@@ -157,7 +149,7 @@ const handleCheck = (currentState) => {
         <div className="flex justify-between space-x-4">
           <select
             onClick={handleStatus}
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered w-full max-w-xs select-helvetica"
           >
             <option hidden disabled selected>
               By Launch Status
@@ -167,7 +159,7 @@ const handleCheck = (currentState) => {
           </select>
           <select
             onClick={handleLaunching}
-            className="select select-bordered w-full max-w-xs"
+            className="select select-bordered w-full max-w-xs select-helvetica"
           >
             <option hidden disabled selected>
               By Launch Date
