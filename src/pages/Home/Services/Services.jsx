@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from "react";
 import Details from "../Details.jsx/Details";
 import Pagination from "../Pagination/Pagination";
@@ -11,7 +9,7 @@ const Services = () => {
   const [postsPerPage] = useState(9);
   const [search, setSearch] = useState("");
   const [filteredServices, setFilteredServices] = useState([]);
-  let x=1;
+  let x = 1;
 
   useEffect(() => {
     fetch("https://api.spacexdata.com/v3/launches")
@@ -36,7 +34,7 @@ const Services = () => {
   const lastPostIndex = currentPage * postsPerPage;
   const firstPostIndex = lastPostIndex - postsPerPage;
   const currentPosts = filteredServices.slice(firstPostIndex, lastPostIndex);
-  
+
   return (
     <div>
       <Details
