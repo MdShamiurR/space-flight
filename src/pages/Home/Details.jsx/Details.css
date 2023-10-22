@@ -1,3 +1,24 @@
-.select-helvetica {
-  font-family: "Helvetica Neue", sans-serif;
+/* Default styles for larger screens */
+.text-center {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.mt-14 {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .text-center {
+    font-size: 2rem; /* Adjust font size for smaller screens */
+  }
+
+  .mt-14 {
+    margin-top: 10px; /* Adjust margin for smaller screens */
+  }
+
+  /* Add more responsive styles as needed */
 }

@@ -39,7 +39,6 @@ const Services = () => {
   
   return (
     <div>
-      
       <Details
         setSearch={setSearch}
         search={search}
@@ -57,8 +56,7 @@ const Services = () => {
             service={currentPost}
             filteredServices={filteredServices}
             setFilteredServices={setFilteredServices}
-          >
-          </ServicesCard>
+          ></ServicesCard>
         ))}
       </div>
 
@@ -68,7 +66,6 @@ const Services = () => {
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
       ></Pagination>
-
     </div>
   );
 };

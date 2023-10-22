@@ -1,4 +1,6 @@
 import Services from "./Services/services";
+// import Services from "../Home/Services/Services";
+
 
 
 const Home = () => {
@@ -7,7 +9,7 @@ const Home = () => {
     <div>
 
       <Services></Services>
-      
+      {/* <Services></Services>       */}
      </div>
   );
 };

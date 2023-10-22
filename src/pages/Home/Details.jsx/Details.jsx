@@ -4,6 +4,7 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import "../../../Shared/FontFamily/FontFamily.css";
 
 
+
 const Details = ({
   setSearch,
   search,
@@ -90,10 +91,12 @@ const handleStatus = (event) => {
 
   const handleChange = (event) => {
     setSearch(event.target.value);
+    setCurrentPage(1);
+    
   };
 
   return (
-    <div>
+    <div className="">
       <div className="text-center mt-20">
         <h1 className="text-4xl font-medium text-[#212529]">
           Spaceflight details
@@ -103,9 +106,9 @@ const handleStatus = (event) => {
         </p>
       </div>
 
-      <div className="mt-14">
+      <div className="mt-14 w-full flex justify-end">
         <label
-          className="cursor-pointer place-content-end "
+          className="cursor-pointer"
           style={{ display: "flex", alignItems: "center" }}
         >
           <input
@@ -123,7 +126,7 @@ const handleStatus = (event) => {
         </label>
       </div>
 
-      <div className="flex justify-between mt-5">
+      <div className="flex justify-between mt-5 ">
         <div style={{ display: "flex", alignItems: "center" }}>
           <input
             type="text"
@@ -146,7 +149,7 @@ const handleStatus = (event) => {
           </button>
         </div>
 
-        <div className="flex justify-between space-x-4">
+        <div className="flex justify-between space-x-4 ">
           <select
             onClick={handleStatus}
             className="select select-bordered w-full max-w-xs select-helvetica"
